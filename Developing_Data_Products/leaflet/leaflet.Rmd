@@ -1,0 +1,75 @@
+---
+title: "Leaflet"
+author: "The Johns Hopkins Data Science Lab"
+output:
+  ioslides_presentation:
+    logo: ../../img/bloomberg_shield.png
+  beamer_presentation: default
+always_allow_html: yes
+---
+
+## Introduction
+
+Leaflet is one of the most popular Javascript libraries for
+creating interactive maps. The leaflet R package allows you
+to create your own leaflet maps without needing to know any
+Javascript!
+
+### Installation
+
+```r
+install.packages("leaflet")
+```
+
+## Your First Map
+
+```{r}
+library(leaflet)
+my_map <- leaflet() %>% 
+  addTiles()
+my_map
+```
+
+## Adding Markers
+
+```{r}
+library(leaflet)
+my_map <- my_map %>%
+  addMarkers(lat=39.2980803, lng=-76.5898801, 
+             popup="Jeff Leek's Office")
+my_map
+```
+
+## Adding Many Markers
+
+```{r}
+set.seed(2016-04-25)
+df <- data.frame(lat = runif(20, min = 39.2, max = 39.3),
+                 lng = runif(20, min = -76.6, max = -76.5))
+df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers()
+```
+
+## Making Custom Markers
+
+```{r}
+hopkinsIcon <- makeIcon(
+  iconUrl = "http://brand.jhu.edu/content/uploads/2014/06/university.shield.small_.blue_.png",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+hopkinsLatLong <- data.frame(lat = c(39.2973166, 39.3288851, 39.2906617),
+                             lng = c(-76.5929798, -76.6206598, -76.5469683))
+```
+
+## Making Custom Markers
+
+```{r}
+hopkinsLatLong %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon = hopkinsIcon)
+```
