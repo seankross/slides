@@ -2,10 +2,11 @@
 
 ## Todo:
 
-- [ ] Shiny & Shiny Widgets - Sean/Brian
+- [ ] Shiny - Sean/Brian
+- [ ] Shiny Widgets - Sean/Brian
 - [ ] R Packages - Roger
-- [ ] Leaflet - Sean/Brain
-- [ ] GoogleViz
+- [x] Leaflet - Sean/Brain
+- [x] GoogleViz
 - [ ] Plotly - Brian
 - [ ] rmarkdown - Roger
 - [ ] swirl - Sean/Brian
