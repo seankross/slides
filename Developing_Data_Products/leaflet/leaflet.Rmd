@@ -104,7 +104,7 @@ df %>%
 
 ## Making Custom Markers
 
-The blue markers that leaflet comes packaed with may not be
+The blue markers that leaflet comes packaged with may not be
 enough depending on what you're mapping. Thankfully you can
 make your own markers from `.png` files.
 
