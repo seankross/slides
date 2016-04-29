@@ -3,7 +3,7 @@
 ## Todo:
 
 - [ ] Shiny - Sean/Brian
-- [ ] Shiny Widgets - Sean/Brian
+- [x] [Shiny Gadgets](http://shiny.rstudio.com/articles/gadgets.html) - Sean/Brian
 - [ ] R Packages - Roger
 - [x] Leaflet - Sean/Brain
 - [x] GoogleViz
