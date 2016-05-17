@@ -1,5 +1,5 @@
 ---
-title: "Leaflet"
+title: "R Markdown"
 author: "The Johns Hopkins Data Science Lab"
 output:
   ioslides_presentation:
@@ -327,5 +327,5 @@ df %>%
 
 ## Conclusion
 
-For more details about the leaflet package for R 
+For for details about the leaflet package for R 
 visit http://rstudio.github.io/leaflet/.
