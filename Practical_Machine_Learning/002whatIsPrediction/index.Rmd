@@ -1,0 +1,175 @@
+---
+title: "What is prediction?"
+author: "Jeffrey Leek"
+output: pdf_document
+always_allow_html: 'yes'
+---
+
+
+
+
+## The central dogma of prediction
+
+![centraldogma.png](../../assets/img/08_PredictionAndMachineLearning/centraldogma.png)
+
+
+## What can go wrong
+
+![googleflu.png](../../assets/img/08_PredictionAndMachineLearning/googleflu.png)
+
+
+http://www.sciencemag.org/content/343/6176/1203.full.pdf
+
+
+## Components of a predictor
+
+</br>
+
+<center> question -> input data -> features -> algorithm -> parameters -> evaluation  </center>
+
+
+
+## SPAM Example
+
+</br>
+
+<center> <redtext>question</redtext> -> input data -> features -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+__Start with a general question__
+
+Can I automatically detect emails that are SPAM that are not?
+
+__Make it concrete__
+
+Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?
+
+
+
+## SPAM Example
+
+</br>
+
+<center> question -> <redtext>input data </redtext> -> features -> algorithm -> parameters -> evaluation  </center>
+
+![spamR.png](../../assets/img/spamR.png)
+
+[http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html](http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html)
+
+
+
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <redtext>features</redtext> -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+
+
+<b>
+Dear Jeff, 
+
+Can you send me your address so I can send you the invitation? 
+
+Thanks,
+
+Ben
+</b>
+
+
+
+
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <redtext>features</redtext> -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+<b> 
+
+Dear Jeff, 
+
+Can <rt>you</rt> send me your address so I can send <rt>you</rt> the invitation? 
+
+Thanks,
+
+Ben
+</b>
+
+</br>
+
+Frequency of you $= 2/17 = 0.118$
+
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <redtext>features</redtext> -> algorithm -> parameters -> evaluation  </center>
+
+
+```{r loadData}
+library(kernlab)
+data(spam)
+head(spam)
+
+```
+
+
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> <redtext>algorithm</redtext> -> parameters -> evaluation  </center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+plot(density(spam$your[spam$type=="nonspam"]),
+     col="blue",main="",xlab="Frequency of 'your'")
+lines(density(spam$your[spam$type=="spam"]),col="red")
+```
+
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> <redtext>algorithm</redtext> -> parameters -> evaluation  </center>
+
+</br></br>
+
+__Our algorithm__
+
+* Find a value $C$. 
+* __frequency of 'your' $>$ C__ predict "spam"
+
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> algorithm -> <redtext>parameters</redtext> -> evaluation  </center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+plot(density(spam$your[spam$type=="nonspam"]),
+     col="blue",main="",xlab="Frequency of 'your'")
+lines(density(spam$your[spam$type=="spam"]),col="red")
+abline(v=0.5,col="black")
+```
+
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> algorithm -> parameters -> <redtext>evaluation</redtext></center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+prediction <- ifelse(spam$your > 0.5,"spam","nonspam")
+table(prediction,spam$type)/length(spam$type)
+```
+
+Accuracy $\approx 0.459 + 0.292 = 0.751$

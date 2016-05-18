@@ -1,0 +1,80 @@
+---
+title: What data should you use?
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+## A succcessful predictor
+
+![fivethirtyeight.png](../../assets/img/08_PredictionAndMachineLearning/fivethirtyeight.png)
+
+[fivethirtyeight.com](fivethirtyeight.com)
+
+
+## Polling data
+
+![gallup.png](../../assets/img/08_PredictionAndMachineLearning/gallup.png)
+
+[http://www.gallup.com/](http://www.gallup.com/)
+
+
+## Weighting the data
+
+![538.png](../../assets/img/08_PredictionAndMachineLearning/538.png)
+
+[http://www.fivethirtyeight.com/2010/06/pollster-ratings-v40-methodology.html](http://www.fivethirtyeight.com/2010/06/pollster-ratings-v40-methodology.html)
+
+
+## Key idea
+
+<center>To predict X use data related to X</center>
+
+
+
+## Key idea
+
+<center>To predict player performance use data about player performance</center>
+
+![moneyball.jpg](../../assets/img/08_PredictionAndMachineLearning/moneyball.jpg)
+
+
+## Key idea
+
+<center>To predict movie preferences use data about movie preferences</center>
+
+![netflix.png](../../assets/img/08_PredictionAndMachineLearning/netflix.png)
+
+
+## Key idea
+
+<center>To predict hospitalizations use data about hospitalizations</center>
+
+![heritage.png](../../assets/img/08_PredictionAndMachineLearning/heritage.png)
+
+
+## Not a hard rule
+
+<center>To predict flu outbreaks use Google searches</center>
+
+![flutrends.png](../../assets/img/08_PredictionAndMachineLearning/flutrends.png)
+
+[http://www.google.org/flutrends/](http://www.google.org/flutrends/)
+
+
+## Looser connection = harder prediction
+
+![oncotype.png](../../assets/img/08_PredictionAndMachineLearning/oncotype.png)
+
+
+## Data properties matter
+
+![fluproblems.jpg](../../assets/img/08_PredictionAndMachineLearning/fluproblems.jpg)
+
+
+## Unrelated data is the most common mistake
+
+![choc.png](../../assets/img/08_PredictionAndMachineLearning/choc.png)
+
+[http://www.nejm.org/doi/full/10.1056/NEJMon1211064](http://www.nejm.org/doi/full/10.1056/NEJMon1211064)

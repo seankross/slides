@@ -1,0 +1,6 @@
+---
+title: Reproducible Research Case Study in High-Throughput Biology
+author: Roger D. Peng, Associate Professor of Biostatistics
+always_allow_html: 'yes'
+---
+

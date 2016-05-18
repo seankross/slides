@@ -1,0 +1,77 @@
+---
+title: Unsupervised prediction
+author: Jeffrey Leek, Assistant Professor of Biostatistics
+always_allow_html: 'yes'
+---
+
+
+
+## Key ideas
+
+* Sometimes you don't know the labels for prediction
+* To build a predictor
+  * Create clusters
+  * Name clusters
+  * Build predictor for clusters
+* In a new data set
+  * Predict clusters
+
+
+
+## Iris example ignoring species labels
+
+```{r iris, cache=TRUE}
+data(iris); library(ggplot2); library(caret)
+inTrain <- createDataPartition(y=iris$Species,
+                              p=0.7, list=FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+dim(training); dim(testing)
+```
+
+
+
+## Cluster with k-means
+
+```{r kmeans,dependson="iris",fig.height=4,fig.width=6,cache=TRUE}
+kMeans1 <- kmeans(subset(training,select=-c(Species)),centers=3)
+training$clusters <- as.factor(kMeans1$cluster)
+qplot(Petal.Width,Petal.Length,colour=clusters,data=training)
+```
+
+
+
+## Compare to real labels
+
+```{r ,dependson="kmeans"}
+table(kMeans1$cluster,training$Species)
+```
+
+
+
+
+## Build predictor
+
+```{r modelFit,dependson="kmeans",cache=TRUE}
+modFit <- train(clusters ~.,data=subset(training,select=-c(Species)),method="rpart")
+table(predict(modFit,training),training$Species)
+```
+
+
+## Apply on test
+
+```{r ,dependson="modFit"}
+testClusterPred <- predict(modFit,testing) 
+table(testClusterPred ,testing$Species)
+```
+
+
+
+## Notes and further reading
+
+* The cl_predict function in the clue package provides similar functionality
+* Beware over-interpretation of clusters!
+* This is one basic approach to [recommendation engines](http://en.wikipedia.org/wiki/Recommender_system)
+* [Elements of statistical learning](http://www-stat.stanford.edu/~tibs/ElemStatLearn/)
+* [Introduction to statistical learning](http://www-bcf.usc.edu/~gareth/ISL/)
+

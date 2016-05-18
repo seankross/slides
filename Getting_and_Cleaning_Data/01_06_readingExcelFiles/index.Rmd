@@ -1,0 +1,67 @@
+---
+title: Reading Excel files
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+
+
+## Excel files
+
+_Still probably the most widely used format for sharing data_
+
+![excel2.png](../../assets/img/03_ObtainingData/excel2.png)
+
+
+[http://office.microsoft.com/en-us/excel/](http://office.microsoft.com/en-us/excel/)
+
+
+
+## Example - Baltimore camera data
+
+![cameras.png](../../assets/img/03_ObtainingData/cameras.png)
+
+[https://data.baltimorecity.gov/Transportation/Baltimore-Fixed-Speed-Cameras/dz54-2aru](https://data.baltimorecity.gov/Transportation/Baltimore-Fixed-Speed-Cameras/dz54-2aru)
+
+
+## Download the file to load
+
+```{r data}
+if(!file.exists("data")){dir.create("data")}
+fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.xlsx?accessType=DOWNLOAD"
+download.file(fileUrl,destfile="./data/cameras.xlsx",method="curl")
+dateDownloaded <- date()
+```
+
+
+## read.xlsx(), read.xlsx2() {xlsx package}
+
+```{r xlsx,dependson="data"}
+library(xlsx)
+cameraData <- read.xlsx("./data/cameras.xlsx",sheetIndex=1,header=TRUE)
+head(cameraData)
+```
+
+
+
+## Reading specific rows and columns
+
+```{r ,dependson="xlsx"}
+colIndex <- 2:3
+rowIndex <- 1:4
+cameraDataSubset <- read.xlsx("./data/cameras.xlsx",sheetIndex=1,
+                              colIndex=colIndex,rowIndex=rowIndex)
+cameraDataSubset
+```
+
+
+## Further notes
+
+* The _write.xlsx_ function will write out an Excel file with similar arguments.
+* _read.xlsx2_ is much faster than _read.xlsx_ but for reading subsets of rows may be slightly unstable. 
+* The [XLConnect](http://cran.r-project.org/web/packages/XLConnect/index.html) package has more options for writing and manipulating Excel files
+* The [XLConnect vignette](http://cran.r-project.org/web/packages/XLConnect/vignettes/XLConnect.pdf) is a good place to start for that package
+* In general it is advised to store your data in either a database
+or in comma separated files (.csv) or tab separated files (.tab/.txt) as they are easier to distribute.

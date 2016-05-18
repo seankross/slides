@@ -1,0 +1,87 @@
+---
+title: Motivation and pre-requisites
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+
+## About this course
+
+* This course covers the basic ideas behind getting data ready for analysis
+  * Finding and extracting raw data
+  * Tidy data principles and how to make data tidy
+  * Practical implementation through a range of R packages
+* What this course depends on
+  * The Data Scientist's Toolbox
+  * R Programming
+* What would be useful
+  * Exploratory analysis
+  * Reporting Data and Reproducible Research
+
+
+## What you wish data looked like
+
+![excel.png](../../assets/img/03_ObtainingData/excel.png)
+
+
+
+## What does data really look like? 
+
+![fastq.png](../../assets/img/03_ObtainingData/fastq.png)
+
+
+[http://brianknaus.com/software/srtoolbox/s_4_1_sequence80.txt](http://brianknaus.com/software/srtoolbox/s_4_1_sequence80.txt)
+
+
+
+## What does data really look like? 
+
+![twitter.png](../../assets/img/03_ObtainingData/twitter.png)
+
+
+[https://dev.twitter.com/docs/api/1/get/blocks/blocking](https://dev.twitter.com/docs/api/1/get/blocks/blocking)
+
+
+## What does data really look like?
+
+
+![medicalrecord.png](../../assets/img/03_ObtainingData/medicalrecord.png)
+
+
+[http://blue-button.github.com/challenge/](http://blue-button.github.com/challenge/)
+
+
+
+## Where is data?
+
+![databases.png](../../assets/img/03_ObtainingData/databases.png)
+
+
+[http://rickosborne.org/blog/2010/02/infographic-migrating-from-sql-to-mapreduce-with-mongodb/](http://rickosborne.org/blog/2010/02/infographic-migrating-from-sql-to-mapreduce-with-mongodb/)
+
+
+
+## Where is data?
+
+![twitter.png](../../assets/img/03_ObtainingData/twitter.png)
+
+[https://dev.twitter.com/docs/api/1/get/blocks/blocking](https://dev.twitter.com/docs/api/1/get/blocks/blocking)
+
+
+
+## Where is data?
+
+![baltimore.png](../../assets/img/03_ObtainingData/baltimore.png)
+
+[https://data.baltimorecity.gov/](https://data.baltimorecity.gov/)
+
+
+
+## The goal of this course
+
+</br></br>
+
+<center><rt>Raw data -> Processing script -> tidy data</rt> -> data analysis -> data communication </center>
+

@@ -1,0 +1,128 @@
+---
+title: Types of errors
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+
+## Basic terms
+
+In general, __Positive__ = identified and __negative__ = rejected. Therefore:
+
+__True positive__ = correctly identified
+
+__False positive__ = incorrectly identified
+
+__True negative__ = correctly rejected
+
+__False negative__ = incorrectly rejected
+
+_Medical testing example_:
+
+__True positive__ = Sick people correctly diagnosed as sick
+
+__False positive__= Healthy people incorrectly identified as sick
+
+__True negative__ = Healthy people correctly identified as healthy
+
+__False negative__ = Sick people incorrectly identified as healthy.
+
+[http://en.wikipedia.org/wiki/Sensitivity_and_specificity](http://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+
+
+
+## Key quantities
+
+
+![keyquantities.png](../../assets/img/keyquantities.png)
+
+
+[http://en.wikipedia.org/wiki/Sensitivity_and_specificity](http://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## Key quantities as fractions
+
+
+![keyquantfrac.png](../../assets/img/keyquantfrac.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+
+## Screening tests
+
+
+![predpos1.png](../../assets/img/predpos1.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## General population
+
+
+![predpos2.png](../../assets/img/predpos2.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## General population as fractions
+
+
+![predpos3.png](../../assets/img/predpos3.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## At risk subpopulation
+
+![predpos4.png](../../assets/img/predpos4.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## At risk subpopulation as fraction
+
+![predpos5.png](../../assets/img/predpos5.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+
+## Key public health issue 
+
+![mammograms.png](../../assets/img/mammograms.png)
+http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/
+
+
+## Key public health issue 
+
+![prostatescreen.png](../../assets/img/prostatescreen.png)
+
+
+
+
+## For continuous data
+
+__Mean squared error (MSE)__:
+
+$$\frac{1}{n} \sum_{i=1}^n (Prediction_i - Truth_i)^2$$
+
+__Root mean squared error (RMSE)__:
+
+$$\sqrt{\frac{1}{n} \sum_{i=1}^n(Prediction_i - Truth_i)^2}$$
+
+
+## Common error measures
+
+1. Mean squared error (or root mean squared error)
+  * Continuous data, sensitive to outliers
+2. Median absolute deviation 
+  * Continuous data, often more robust
+3. Sensitivity (recall)
+  * If you want few missed positives
+4. Specificity
+  * If you want few negatives called positives
+5. Accuracy
+  * Weights false positives/negatives equally
+6. Concordance
+  * One example is [kappa](http://en.wikipedia.org/wiki/Cohen%27s_kappa)
+5. Predictive value of a positive (precision)
+  * When you are screeing and prevelance is low

@@ -1,0 +1,104 @@
+---
+title: Random forests
+author: Jeffrey Leek, Assistant Professor of Biostatistics
+always_allow_html: 'yes'
+---
+
+
+
+
+## Random forests
+
+1. Bootstrap samples
+2. At each split, bootstrap variables
+3. Grow multiple trees and vote
+
+__Pros__:
+
+1. Accuracy
+
+__Cons__:
+
+1. Speed
+2. Interpretability
+3. Overfitting
+
+
+
+## Random forests
+
+![forests.png](../../assets/img/08_PredictionAndMachineLearning/forests.png)
+
+[http://www.robots.ox.ac.uk/~az/lectures/ml/lect5.pdf](http://www.robots.ox.ac.uk/~az/lectures/ml/lect5.pdf)
+
+
+
+## Iris data
+
+```{r iris, cache=TRUE}
+library(caret)
+data(iris); library(ggplot2)
+inTrain <- createDataPartition(y=iris$Species,
+                              p=0.7, list=FALSE)
+training <- iris[inTrain,]
+testing <- iris[-inTrain,]
+```
+
+
+
+## Random forests
+
+```{r forestIris, dependson="irisData",fig.height=4,fig.width=4,cache=TRUE}
+library(caret)
+modFit <- train(Species~ .,data=training,method="rf",prox=TRUE)
+modFit
+```
+
+
+## Getting a single tree
+
+```{r , dependson="forestIris",fig.height=4,fig.width=4}
+getTree(modFit$finalModel,k=2)
+```
+
+
+## Class "centers"
+
+```{r centers, dependson="forestIris",fig.height=4,fig.width=4}
+irisP <- classCenter(training[,c(3,4)], training$Species, modFit$finalModel$prox)
+irisP <- as.data.frame(irisP); irisP$Species <- rownames(irisP)
+p <- qplot(Petal.Width, Petal.Length, col=Species,data=training)
+p + geom_point(aes(x=Petal.Width,y=Petal.Length,col=Species),size=5,shape=4,data=irisP)
+```
+
+
+## Predicting new values
+
+```{r predForest, dependson="centers",fig.height=4,fig.width=4,cache=TRUE}
+pred <- predict(modFit,testing); testing$predRight <- pred==testing$Species
+table(pred,testing$Species)
+```
+
+
+## Predicting new values
+
+```{r, dependson="predForest",fig.height=4,fig.width=4}
+qplot(Petal.Width,Petal.Length,colour=predRight,data=testing,main="newdata Predictions")
+```
+
+
+## Notes and further resources
+
+__Notes__:
+
+* Random forests are usually one of the two top
+performing algorithms along with boosting in prediction contests.
+* Random forests are difficult to interpret but often very accurate. 
+* Care should be taken to avoid overfitting (see [rfcv](http://cran.r-project.org/web/packages/randomForest/randomForest.pdf) funtion)
+
+
+__Further resources__:
+
+* [Random forests](http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm)
+* [Random forest Wikipedia](http://en.wikipedia.org/wiki/Random_forest)
+* [Elements of Statistical Learning](http://www-stat.stanford.edu/~tibs/ElemStatLearn/)
