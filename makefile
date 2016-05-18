@@ -12,10 +12,10 @@ files:
 	@echo $(PDF_FILES)
 
 %.html: %.Rmd
-	Rscript -e "rmarkdown::render('$<')"
+	Rscript -e "source('~/.Rprofile');rmarkdown::render('$<', rmarkdown::ioslides_presentation(fig_height = 4.5, fig_caption = FALSE, logo = '../../img/bloomberg_shield.png', css = '../../assets/css/slides.css'))"
 
 %.pdf: %.Rmd
-	Rscript -e "rmarkdown::render('$<', rmarkdown::beamer_presentation())"
+	Rscript -e "source('~/.Rprofile');rmarkdown::render('$<', rmarkdown::beamer_presentation(fig_caption = FALSE))"
 
 clean:
 	rm $(HTML_FILES) $(PDF_FILES)
