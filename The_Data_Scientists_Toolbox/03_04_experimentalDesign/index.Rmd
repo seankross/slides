@@ -1,0 +1,222 @@
+---
+title: Experimental design
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+## Why you should care - an exciting result!
+
+
+![potti1.png](../../assets/img/01_DataScientistToolbox/potti1.png)
+
+
+[http://www.nature.com/nm/journal/v12/n11/full/nm1491.html](http://www.nature.com/nm/journal/v12/n11/full/nm1491.html
+)
+
+
+## Why you should care - uh oh! 
+
+
+![baggerly1.png](../../assets/img/01_DataScientistToolbox/baggerly1.png)
+
+
+[http://arxiv.org/pdf/1010.1092.pdf](http://arxiv.org/pdf/1010.1092.pdf)
+
+
+## Why you should care - serious trouble
+
+
+![potti2.png](../../assets/img/01_DataScientistToolbox/potti2.png)
+
+
+
+## Know and care about the analysis plan!
+
+![know.png](../../assets/img/01_DataScientistToolbox/know.png)
+
+[http://nsaunders.wordpress.com/2012/07/23/we-really-dont-care-what-statistical-method-you-used/](http://nsaunders.wordpress.com/2012/07/23/we-really-dont-care-what-statistical-method-you-used/)
+
+
+
+## Have a plan for data and code sharing
+
+
+![github.png](../../assets/img/01_DataScientistToolbox/github.png)
+
+
+[https://github.com/](https://github.com/)
+
+![figshare.png](../../assets/img/01_DataScientistToolbox/figshare.png)
+
+[http://figshare.com/](http://figshare.com/)
+
+
+
+## May I recommend? 
+
+
+![share.png](../../assets/img/01_DataScientistToolbox/share.png)
+
+[https://github.com/jtleek/datasharing](https://github.com/jtleek/datasharing
+)
+
+
+
+## Formulate your question in advance
+
+![abtest.png](../../assets/img/01_DataScientistToolbox/abtest.png)
+
+
+__Question__: Does changing the text on your website improve donations?
+
+__Experiment__:
+
+1. Randomly show visitors one version or the other
+2. Measure how much they donate
+3. Determine which is better
+
+[http://www.wired.com/business/2012/04/ff_abtesting](http://www.wired.com/business/2012/04/ff_abtesting)
+
+
+## Statistical inference
+
+![infcentraldogma.png](../../assets/img/01_DataScientistToolbox/infcentraldogma.png)
+
+[http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf](http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture2.pdf)
+
+
+
+
+## Variability - Scenario 1
+
+```{r,echo=FALSE,fig.height=5.5,fig.width=5.5}
+set.seed(4332)
+dol <- rnorm(6,mean=6,sd=3)
+fac <- rep(c(1,2),each=3)
+plot(jitter(fac,factor=0.5),dol,xaxt="n",ylab="Dollars (thousands)",
+     xlab="Webpage version",pch=19,col=(fac*2),ylim=c(0,9))
+axis(1,at=c(1.05,1.95),labels=c("Sign-up","Donate"))
+```
+
+
+
+## Variability - Scenario 2
+
+```{r,echo=FALSE,fig.height=5.5,fig.width=5.5}
+set.seed(4332)
+dol <- rnorm(6,mean=rep(c(1,2),each=3),sd=0.1)
+fac <- rep(c(1,2),each=3)
+plot(jitter(fac,factor=0.5),dol,xaxt="n",ylab="Dollars (thousands)",
+     xlab="Webpage version",pch=19,col=(fac*2),ylim=c(0,9))
+axis(1,at=c(1.05,1.95),labels=c("Sign-up","Donate"))
+```
+
+
+
+
+## Variability - Scenario 3
+
+```{r,echo=FALSE,fig.height=5.5,fig.width=5.5}
+set.seed(4331)
+dol <- rnorm(6,mean=rep(c(1,7),each=3),sd=1)
+fac <- rep(c(1,2),each=3)
+plot(jitter(fac,factor=0.5),dol,xaxt="n",ylab="Dollars (thousands)",
+     xlab="Webpage version",pch=19,col=(fac*2),ylim=c(0,9))
+axis(1,at=c(1.05,1.95),labels=c("Sign-up","Donate"))
+```
+
+
+## Confounding
+
+
+![shoelit.png](../../assets/img/01_DataScientistToolbox/shoelit.png)
+
+
+
+## Correlation is not causation*
+
+![nejm.jpg](../../assets/img/01_DataScientistToolbox/nejm.jpg)
+
+
+
+[http://www.nejm.org/doi/full/10.1056/NEJMon1211064](http://www.nejm.org/doi/full/10.1056/NEJMon1211064)
+
+_Sometimes called spurious correlation*_
+
+
+## Randomization and blocking
+
+
+* If you can (and want to) fix a variable
+  * Website always says Obama 2014 on it
+* If you don't fix a variable, stratify it
+  * If you are testing sign up phrases and have two website colors, use both phrases equally on both. 
+* If you can't fix a variable, randomize it
+
+
+
+## Why does randomization help? 
+
+![whyrandomize.png](../../assets/img/01_DataScientistToolbox/whyrandomize.png)
+
+[http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture1.pdf](http://www.gs.washington.edu/academics/courses/akey/56008/lecture/lecture1.pdf)
+
+
+## Prediction
+
+![centraldogma.png](../../assets/img/08_PredictionAndMachineLearning/centraldogma.png)
+
+
+## Prediction versus inference
+
+![predvinf.png](../../assets/img/01_DataScientistToolbox/predvinf.png)
+
+[http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/](http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/)
+
+
+## Prediction key quantities
+
+
+![predquant.png](../../assets/img/01_DataScientistToolbox/predquant.png)
+
+[http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/](http://www.biostat.jhsph.edu/~iruczins/teaching/140.615/)
+
+
+## Beware data dredging
+
+
+![mt1.png](../../assets/img/01_DataScientistToolbox/mt1.png)
+
+[http://xkcd.com/882/](http://xkcd.com/882/)
+
+
+
+## Beware data dredging
+
+
+![mt2.png](../../assets/img/01_DataScientistToolbox/mt2.png)
+
+[http://xkcd.com/882/](http://xkcd.com/882/)
+
+
+
+## Beware data dredging
+
+
+![mt3.png](../../assets/img/01_DataScientistToolbox/mt3.png)
+
+[http://xkcd.com/882/](http://xkcd.com/882/)
+
+
+## Summary
+
+* Good experiments
+  * Have replication
+  * Measure variability
+  * Generalize to the problem you care about
+  * Are transparent
+* Prediction is not inference
+  * Both can be important
+* Beware data dredging
