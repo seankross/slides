@@ -1,0 +1,155 @@
+---
+title: Homework 1 for Stat Inference
+author: Brian Caffo
+always_allow_html: 'yes'
+---
+
+## About these slides
+- These are some practice problems for Statistical Inference Quiz 1
+- They were created using slidify interactive which you will learn in
+Creating Data Products
+- Please help improve this with pull requests here
+(https://github.com/bcaffo/courses)
+
+
+
+Consider influenza epidemics for two parent heterosexual families. Suppose that the probability is 15% that at least one of the parents has contracted the disease. The probability that the father has contracted influenza is 10% while that the mother contracted the disease is 9%. What is the probability that both contracted influenza expressed as a whole number percentage?
+[Watch a video solution](https://www.youtube.com/watch?v=CvnmoCuIN08&index=1&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L)
+
+1. 15%
+2. 10%
+3. 9%
+4. _4%_
+
+*** .hint
+$A = Father$, $P(A) = .10$, $B = Mother$, $P(B) = .09$
+$P(A\cup B) = .15$,
+
+*** .explanation
+$P(A\cup B) = P(A) + P(B) - P(AB)$ thus
+$$.15 = .10 + .09 - P(AB)$$
+```{r}
+.10 + .09 - .15
+```
+
+
+A random variable, $X$, is uniform, a box from $0$ to $1$ of height $1$. (So that its density is $f(x) = 1$ for $0\leq x \leq 1$.) What is its median expressed to two decimal places?
+[Watch a video solution.](https://www.youtube.com/watch?v=UXcarD-1xAM&index=2&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L)</p>
+
+1. 1.00
+2. 0.75
+3. _0.50_
+4. 0.25
+
+*** .hint
+The median is the point so that 50% of the density lies below it.
+
+*** .explanation
+This density looks like a box. So, notice that $P(X \leq x) = width\times height = x$.
+We want $.5 = P(X\leq x) = x$.
+
+
+You are playing a game with a friend where you flip a coin and if it comes up heads you give her  $X$ dollars and if it comes up tails she gives you $Y$ dollars. The odds that the coin is heads is $d$. What is your expected earnings? [Watch a video solution.](https://www.youtube.com/watch?v=5J88Zq0q81o&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L&index=3)
+
+1. $-X \frac{d}{1 + d} + Y \frac{1}{1+d}$ *
+2. $X \frac{d}{1 + d} + Y \frac{1}{1+d}$
+3. $X \frac{d}{1 + d} - Y \frac{1}{1+d}$
+4. $-X \frac{d}{1 + d} - Y \frac{1}{1+d}$
+
+*** .hint
+The odds that you lose on a given round is given by $p / (1 - p) = d$ which implies
+that $p = d / (1 + d)$.
+
+*** .explanation
+You lose $X$ with probability $p = d/(1 +d)$ and you win $Y$ with probability $1-p = 1/(1 + d)$. So your answer is
+$$
+-X \frac{d}{1 + d} + Y \frac{1}{1+d}
+$$
+
+A random variable takes the value -4 with probability .2 and 1 with probability .8. What
+is the variance of this random variable? [Watch a video solution.](https://www.youtube.com/watch?v=Em-xJeQO1rc&index=4&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L)
+
+1. 0
+2. _4_
+3. 8
+4. 16
+
+*** .hint
+This random variable has mean 0. The variance would be given by $E[X^2]$ then.
+
+*** .explanation
+$$E[X] = 0$$
+$$
+Var(X) = E[X^2] = (-4)^2 * .2 + (1)^2 * .8
+$$
+```{r}
+-4 * .2 + 1 * .8
+(-4)^2 * .2 + (1)^2 * .8
+```
+
+
+If $\bar X$ and $\bar Y$ are comprised of $n$ iid random variables arising from distributions
+having  means $\mu_x$ and $\mu_y$, respectively and common variance $\sigma^2$
+what is the variance $\bar X - \bar Y$? [Watch a video solution of this problem.](https://www.youtube.com/watch?v=7zJhPzX6jns&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L&index=5)
+
+1. 0
+2. _$2\sigma^2/n$_
+3. $\mu_x - \mu_y$
+4. $2\sigma^2$
+
+*** .hint
+Remember that $Var(\bar X) = Var(\bar Y) = \sigma^2 / n$.
+
+*** .explanation
+$$
+Var(\bar X - \bar Y) = Var(\bar X) + Var(\bar Y) = \sigma^2 / n + \sigma^2 / n
+$$
+
+Let $X$ be a random variable having standard deviation $\sigma$. What can
+be said about $X /\sigma$? [Watch a video solution of this problem.](https://www.youtube.com/watch?v=0WUj18_BUPA&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L&index=6)
+
+1. Nothing
+2. _It must have variance 1._
+3. It must have mean 0.
+4. It must have variance 0.
+
+*** .hint
+$Var(aX) = a^2 Var(X)$
+
+*** .explanation
+$$Var(X / \sigma) = Var(X) / \sigma^2 = 1$$
+
+
+If a continuous density that never touches the horizontal axis is symmetric about zero, can we say that its associated median is zero? [Watch a video solution.](https://www.youtube.com/watch?v=sn48CGH_TXI&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L&index=7)
+
+1. _Yes_
+2. No.
+3. It can not be determined given the information given.
+
+*** .explanation
+This is a surprisingly hard problem. The easy explanation is that 50% of the probability
+is below 0 and 50% is above so yes. However, it is predicated on the density not being
+a flat line at 0 around 0. That's why the caveat that it never touches the horizontal axis
+is important.
+
+
+
+Consider the following pmf given in R
+```{r}
+p <- c(.1, .2, .3, .4)
+x <- 2 : 5
+```
+What is the variance expressed to 1 decimal place? [Watch a solution to this problem.](https://www.youtube.com/watch?v=sn48CGH_TXI&list=PLpl-gQkQivXhHOcVeU3bSJg78zaDYbP9L&index=7)
+
+1. _1.0_
+2. 4.0
+3. 6.0
+4. 17.0
+
+*** .hint
+The variance is $E[X^2] - E[X]^2$
+
+*** .explanation
+```{r}
+sum(x ^ 2 * p) - sum(x * p) ^ 2
+```

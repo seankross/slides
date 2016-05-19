@@ -11,3 +11,8 @@
 - [ ] rmarkdown - Roger
 - [ ] swirl - Sean/Brian
 - [ ] Domino Data Lab - Jeff
+
+## Workflow:
+
+1. Make changes to Rmd file.
+2. Run `make`.

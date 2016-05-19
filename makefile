@@ -12,9 +12,11 @@ files:
 	@echo $(PDF_FILES)
 
 %.html: %.Rmd
+	cd Statistical_Inference/homework && $(MAKE)
 	Rscript -e "source('~/.Rprofile');rmarkdown::render('$<', rmarkdown::ioslides_presentation(fig_height = 4.5, fig_caption = FALSE, logo = '../../img/bloomberg_shield.png', css = '../../assets/css/slides.css'))"
 
 %.pdf: %.Rmd
+	cd Statistical_Inference/homework && $(MAKE)
 	Rscript -e "source('~/.Rprofile');rmarkdown::render('$<', rmarkdown::beamer_presentation(fig_caption = FALSE))"
 
 clean:

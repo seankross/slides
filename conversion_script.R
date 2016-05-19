@@ -2,13 +2,13 @@ library(yaml)
 library(XML)
 library(stringr)
 
-files <- list.files("../courses/08_PracticalMachineLearning/", 
+files <- list.files("../GitHub2/courses/06_StatisticalInference/", 
                     pattern = "Rmd$", recursive = TRUE, 
                     full.names = TRUE)
 week_names <- dirname(files)
-file.copy(week_names, "Practical_Machine_Learning", recursive = TRUE)
+file.copy(week_names, "Statistical_Inference", recursive = TRUE)
 
-rmds <- list.files("Practical_Machine_Learning",
+rmds <- list.files("Statistical_Inference",
                    pattern = "Rmd$", full.names = TRUE,
                    recursive = TRUE)
 
