@@ -2,9 +2,9 @@
 title: "R Markdown"
 author: "The Johns Hopkins Data Science Lab"
 output:
+  beamer_presentation: default
   ioslides_presentation:
     logo: ../../img/bloomberg_shield.png
-  beamer_presentation: default
   slidy_presentation: default
 always_allow_html: yes
 ---
@@ -94,7 +94,7 @@ head(airquality)
 ## Embedding R Code
 To run the code without showing input or output, use `include=FALSE`. <br><br>
 \`\`\`{r, include=FALSE} <br>
-`library("ggplot2")`<br>
+`library(ggplot2)`<br>
 \`\`\` 
 
 ## Generating Slideshows
