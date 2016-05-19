@@ -1,0 +1,150 @@
+---
+title: Structure of a Data Analysis
+author: Roger D. Peng, Associate Professor of Biostatistics
+always_allow_html: 'yes'
+---
+
+
+
+## Steps in a data analysis
+
+* Define the question
+* Define the ideal data set
+* Determine what data you can access
+* Obtain the data
+* Clean the data
+* Exploratory data analysis
+* Statistical prediction/modeling
+* Interpret results
+* Challenge results
+* Synthesize/write up results
+* Create reproducible code
+
+
+## Steps in a data analysis
+
+* <redtext>Define the question</redtext>
+* <redtext>Define the ideal data set</redtext>
+* <redtext>Determine what data you can access</redtext>
+* <redtext>Obtain the data</redtext>
+* <redtext>Clean the data </redtext>
+* Exploratory data analysis
+* Statistical prediction/modeling
+* Interpret results
+* Challenge results
+* Synthesize/write up results
+* Create reproducible code
+
+
+
+## The key challenge in data analysis
+
+"Ask yourselves, what problem have you solved, ever, that was worth solving, where you knew all of the given information in advance? Where you didn’t have a surplus of information and have to filter it out, or you had insufficient information and have to go find some?"
+
+![meyer.jpg](../../assets/img/meyer.jpg)
+
+
+
+
+## Defining a question
+
+![stat-projects.jpg](../../assets/img/stat-projects.jpg)
+
+1. Statistical methods development
+2. [Danger zone!!!](http://www.drewconway.com/zia/?p=2378)
+3. Proper data analysis 
+
+
+
+## An example
+
+__Start with a general question__
+
+Can I automatically detect emails that are SPAM that are not?
+
+__Make it concrete__
+
+Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?
+
+
+## Define the ideal data set
+
+* The data set may depend on your goal
+  * Descriptive - a whole population
+  * Exploratory - a random sample with many variables measured
+  * Inferential - the right population, randomly sampled
+  * Predictive - a training and test data set from the same population
+  * Causal - data from a randomized study
+  * Mechanistic - data about all components of the system
+  
+
+
+## Our example
+
+![datacenter.png](../../assets/img/datacenter.png)
+[http://www.google.com/about/datacenters/inside/](http://www.google.com/about/datacenters/inside/)
+
+
+
+## Determine what data you can access
+
+* Sometimes you can find data free on the web
+* Other times you may need to buy the data
+* Be sure to respect the terms of use
+* If the data don't exist, you may need to generate it yourself
+
+
+
+## Back to our example
+
+![security.png](../../assets/img/security.png)
+
+
+
+## A possible solution
+
+
+![uci.png](../../assets/img/uci.png)
+
+[http://archive.ics.uci.edu/ml/datasets/Spambase](http://archive.ics.uci.edu/ml/datasets/Spambase)
+
+
+
+## Obtain the data
+
+* Try to obtain the raw data
+* Be sure to reference the source
+* Polite emails go a long way
+* If you will load the data from an internet source, record the url and time accessed
+
+
+## Our data set
+
+![spamR.png](../../assets/img/spamR.png)
+
+[http://search.r-project.org/library/kernlab/html/spam.html](http://search.r-project.org/library/kernlab/html/spam.html)
+
+
+
+
+## Clean the data
+
+* Raw data often needs to be processed
+* If it is pre-processed, make sure you understand how
+* Understand the source of the data (census, sample, convenience sample, etc.)
+* May need reformating, subsampling - record these steps
+* __Determine if the data are good enough__ - if not, quit or change data
+
+
+## Our cleaned data set
+
+```{r}
+# If it isn't installed, install the kernlab package with install.packages()
+library(kernlab)
+data(spam)
+str(spam[, 1:5])
+```
+
+[http://search.r-project.org/library/kernlab/html/spam.html](http://search.r-project.org/library/kernlab/html/spam.html)
+
+

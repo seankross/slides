@@ -1,0 +1,74 @@
+---
+title: The Data Scientist's Toolbox
+always_allow_html: 'yes'
+---
+
+
+
+## What do data scientists do? 
+
+* Define the question
+* Define the ideal data set
+* Determine what data you can access
+* Obtain the data
+* Clean the data
+* Exploratory data analysis
+* Statistical prediction/modeling
+* Interpret results
+* Challenge results
+* Synthesize/write up results
+* Create reproducible code
+* Distribute results to other people
+
+
+
+## The main workhorse of data science
+
+![rproject.png](../../assets/img/toolBox/rproject.png)
+
+http://www.r-project.org/
+
+
+## Where we will work on coding
+
+![rstudio.png](../../assets/img/toolBox/rstudio.png)
+
+http://www.rstudio.com/
+
+
+## Rstudio's interface
+
+![ide.png](../../assets/img/toolBox/ide.png)
+
+http://www.rstudio.com/
+
+
+## Primary file types - R script
+
+![rscript.png](../../assets/img/toolBox/rscript.png)
+
+http://www.rstudio.com/ide/docs/using/source
+
+
+
+## Primary file types - R markdown document
+
+
+![rmarkdown.png](../../assets/img/toolBox/rmarkdown.png)
+
+http://www.rstudio.com/ide/docs/authoring/using_markdown
+
+
+## Sharing your results - Github & Git
+
+
+![github.png](../../assets/img/toolBox/github.png)
+
+
+## Where to run Github commands - the shell
+
+![shell.png](../../assets/img/toolBox/shell.png)
+
+
+
+

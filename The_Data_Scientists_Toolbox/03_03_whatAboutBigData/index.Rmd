@@ -1,0 +1,65 @@
+---
+title: What about big data?
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+## How much is there?
+
+![howmuch.png](../../assets/img/01_DataScientistToolbox/howmuch.png)
+
+
+[http://mashable.com/2011/06/28/data-infographic/](http://mashable.com/2011/06/28/data-infographic/)
+
+
+## So what about big data? 
+
+![bigdata.png](../../assets/img/01_DataScientistToolbox/bigdata.png)
+
+
+## Depends on your perspective
+
+![ibm350.jpg](../../assets/img/01_DataScientistToolbox/ibm350.jpg)
+
+
+## Why big data now?
+
+![milgram.jpg](../../assets/img/01_DataScientistToolbox/milgram.jpg)
+
+
+[Travers and Milgram (1969) Sociometry](http://www.jstor.org/discover/10.2307/2786545?uid=3739704&uid=2&uid=4&uid=3739256&sid=21101674727517)
+
+
+## Why big data now?
+
+![leskovec.jpg](../../assets/img/01_DataScientistToolbox/leskovec.jpg)
+
+
+[Leskovec and Horvitz WWW '08](http://arxiv.org/abs/0803.0939)
+
+
+
+## Big or small - you need the right data
+
+![hadoophater.png](../../assets/img/01_DataScientistToolbox/hadoophater.png)
+
+[http://www.chrisstucchio.com/blog/2013/hadoop_hatred.html](http://www.chrisstucchio.com/blog/2013/hadoop_hatred.html)
+
+
+
+
+## Big or small - you need the right data
+
+<q>The data may not contain the answer. The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data... </q> 
+
+[Tukey](http://en.wikipedia.org/wiki/John_Tukey)
+
+
+
+## Big or small - you need the right data
+
+<q>...no matter how big the data are.</q>
+
+[Leek](http://www1.usu.edu/utahstatetoday/images/mar%2003/JeffLeek.jpg)

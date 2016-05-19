@@ -1,0 +1,81 @@
+---
+title: Reading JSON
+author: Jeffrey Leek
+always_allow_html: 'yes'
+---
+
+
+
+
+
+## JSON
+
+* Javascript Object Notation
+* Lightweight data storage
+* Common format for data from application programming interfaces (APIs)
+* Similar structure to XML but different syntax/format
+* Data stored as
+  * Numbers (double)
+  * Strings (double quoted)
+  * Boolean (_true_ or _false_)
+  * Array (ordered, comma separated enclosed in square brackets _[]_)
+  * Object (unorderd, comma separated collection of key:value pairs in curley brackets _{}_)
+
+
+[http://en.wikipedia.org/wiki/JSON](http://en.wikipedia.org/wiki/JSON)
+
+
+
+## Example JSON file
+
+![githubjson.png](../../assets/img/03_ObtainingData/githubjson.png)
+
+
+
+## Reading data from JSON {jsonlite package}
+
+```{r readJSON}
+library(jsonlite)
+jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+names(jsonData)
+jsonData$name
+```
+
+
+
+## Nested objects in JSON
+
+```{r,dependson="readJSON"}
+names(jsonData$owner)
+jsonData$owner$login
+```
+
+
+
+## Writing data frames to JSON
+
+```{r writeJSON}
+myjson <- toJSON(iris, pretty=TRUE)
+cat(myjson)
+```
+
+[http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/](http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/)
+
+
+
+## Convert back to JSON
+
+```{r,dependson="writeJSON"}
+iris2 <- fromJSON(myjson)
+head(iris2)
+```
+
+
+[http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/](http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/)
+
+
+## Further resources
+
+* [http://www.json.org/](http://www.json.org/)
+* A good tutorial on jsonlite - [http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/](http://www.r-bloggers.com/new-package-jsonlite-a-smarter-json-encoderdecoder/)
+* [jsonlite vignette](http://cran.r-project.org/web/packages/jsonlite/vignettes/json-mapping.pdf)

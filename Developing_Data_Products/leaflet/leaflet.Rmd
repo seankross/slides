@@ -1,10 +1,6 @@
 ---
 title: "Leaflet"
 author: "The Johns Hopkins Data Science Lab"
-output:
-  ioslides_presentation:
-    logo: ../../img/bloomberg_shield.png
-  beamer_presentation: default
 always_allow_html: yes
 ---
 
