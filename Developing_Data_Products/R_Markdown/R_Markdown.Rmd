@@ -1,6 +1,10 @@
 ---
-title: "Leaflet"
+title: "R Markdown"
 author: "The Johns Hopkins Data Science Lab"
+output:
+  ioslides_presentation:
+    logo: ../../img/bloomberg_shield.png
+  beamer_presentation: default
 always_allow_html: yes
 ---
 
@@ -323,5 +327,5 @@ df %>%
 
 ## Conclusion
 
-For more details about the leaflet package for R 
+For for details about the leaflet package for R 
 visit http://rstudio.github.io/leaflet/.
