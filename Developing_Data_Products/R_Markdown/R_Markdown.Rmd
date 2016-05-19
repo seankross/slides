@@ -2,330 +2,133 @@
 title: "R Markdown"
 author: "The Johns Hopkins Data Science Lab"
 output:
+  beamer_presentation: default
   ioslides_presentation:
     logo: ../../img/bloomberg_shield.png
-  beamer_presentation: default
+  slidy_presentation: default
 always_allow_html: yes
 ---
 
 ## Introduction
 
-Leaflet is one of the most popular Javascript libraries for
-creating interactive maps. The leaflet R package allows you
-to create your own leaflet maps without needing to know any
-Javascript!
+R Markdown is built into RStudio and allows you to create documents like HTML, PDF, and Word documents from R. With R Markdown, you can embed R code into your documents. 
 
-### Installation
+### Why use R Markdown?
+- Turn work in R into more accessible formats
+- Incorporate R code and R plots into documents
+- R Markdown documents are reproducible -- the source code gets rerun every time a document is generated, so if data change or source code changes, the output in the document will change with it. 
 
-```r
-install.packages("leaflet")
+## Getting Started
+
+- Create a new R Markdown file in RStudio by going to  
+File > New File > R Markdown...
+- Click the "presentation" tab
+- Enter a title, author, and select what kind of slideshow you ultimately want (this can all be changed later)
+
+## Getting Started
+The beginning of an R Markdown file looks like this:<br><br>
+`---`  
+`title: "Air Quality"`  
+`author: "JHU"`  
+`date: "May 17, 2016"`  
+`output: html_document`  
+`---`<br><br>
+The new document you've created will contain example text and code below this -- delete it for a fresh start.
+
+## Making Your First Slide
+- Title your first slide using two # signs: <br> `## Insert Title Here`
+- To make a slide without a title, use three asterisks:<br> `***`
+- You can add subheadings with more # signs: <br>
+`### Subheading` or `#### Smaller Subheading`
+- To add a new slide, just add another Title: <br> `## New Slide Title`
+
+## Adding Text
+- Add bullet points to a slide using a hyphen followed by a space: <br>
+`- bullet point`
+- Add sub-points using four spaces and a plus sign:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`+ sub-point`
+- Add an ordered list by typing the number/letter: <br>
+`1. first point`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`a) sub-sub-point`
+- Add bullet points that appear one by one (on click) with:<br>
+`>- iterated bullet point`
+
+## Formatting Text
+              Text                               Code in R Markdown
+----------------------------------    ----------------------------------------
+           plain text                              `plain text`  
+           *italics*                               `*italics*`  
+           **bold**                                `**bold**` 
+  [link](http://www.jhsph.edu)          `[link](http://www.jhsph.edu)`  
+          `verbatim code`                          ` `code here` `
+ 
+## Embedding R Code
+This is a chunk of R code in R Markdown:<br><br>
+\`\`\`{r} <br>
+`head(airquality)`<br>
+\`\`\`  
+The code gets run, and both the input and output are displayed.
+```{r}
+head(airquality)
 ```
 
-## Your First Map
-
-Getting started with leaflet is easy. The `leaflet()`
-function creates a map widget that you can store in a
-variable so that you can modify the map later on. You can
-add features to the map using the pipe operator (`%>%`) just
-like in dplyr. The `addTiles()` function adds mapping data
-from [Open Street Map](http://www.openstreetmap.org/).
-
-```{r, eval=FALSE}
-library(leaflet)
-my_map <- leaflet() %>% 
-  addTiles()
-my_map
-```
-
-## Your First Map
-
+## Embedding R Code
+To hide the input code, use `echo=FALSE`.<br><br>
+\`\`\`{r, echo=FALSE} <br>
+`head(airquality)`<br>
+\`\`\` 
 ```{r, echo=FALSE}
-library(leaflet)
-my_map <- leaflet() %>% 
-  addTiles()
-my_map
+head(airquality)
 ```
+This can be useful for showing plots.
 
-## Adding Markers
-
-You can add markers to your map one at a time using the
-`addMarkers()` function by specifying the longitude and
-latitude. ([Here's](https://twitter.com/drob/status/719927537330040832)
-a tip if you tend to mix them up.) You can specify popup
-text for when you click on the marker with the `popup` 
-argument.
-
+## Embedding R Code
+To show the input code only, use `eval=FALSE`.<br><br>
+\`\`\`{r, eval=FALSE} <br>
+`head(airquality)`<br>
+\`\`\` 
 ```{r, eval=FALSE}
-library(leaflet)
-my_map <- my_map %>%
-  addMarkers(lat=39.2980803, lng=-76.5898801, 
-             popup="Jeff Leek's Office")
-my_map
+head(airquality)
 ```
 
-## Adding Markers
+## Embedding R Code
+To run the code without showing input or output, use `include=FALSE`. <br><br>
+\`\`\`{r, include=FALSE} <br>
+`library("ggplot2")`<br>
+\`\`\` 
 
-```{r, echo=FALSE}
-library(leaflet)
-my_map <- my_map %>%
-  addMarkers(lat=39.2980803, lng=-76.5898801, 
-             popup="Jeff Leek's Office")
-my_map
-```
+## Generating Slideshows
+- Click the **Knit** button at the top of the R Markdown document to generate your new document.
+    + You may be asked to install required packages if you don't already have them installed
+- You can change the type of document generated by changing the `output` line in the header, or by selecting an output from the **Knit** button's pull-down menu.
 
-## Adding Many Markers
+## Generating Slideshows
+- HTML: two options with different looks
+    + `output: ioslides_presentation`
+    + `output: slidy_presentation`
+- PDF: `output: beamer_presentation`  
+- Note: You can specify multiple outputs at the beginning of the R Markdown file if you will need to generate multiple filetypes. 
 
-Adding one marker at a time is often not practical if you
-want to display many markers. If you have a data frame with
-columns `lat` and `lng` you can pipe that data frame into
-`leaflet()` to add all the points at once.
+## PDFs and LaTeX
+- To **knit** a PDF slideshow, you will need to install **LaTeX** on your computer
+- LaTeX is a typesetting system that is needed to convert R Markdown into formatted text for PDFs
 
-```{r, eval=FALSE}
-set.seed(2016-04-25)
-df <- data.frame(lat = runif(20, min = 39.2, max = 39.3),
-                 lng = runif(20, min = -76.6, max = -76.5))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers()
-```
+### Downloading and Installing LaTeX
+- *LaTeX* is free
+- LaTeX takes up a lot of space (almost ~2.6 GB download and takes up ~5 GB when installed)
+- Visit [https://www.tug.org/begin.html](https://www.tug.org/begin.html) to download LaTeX for your operating system
+- Depending on your internet connection, it may take a while to download due to its size 
 
-## Adding Many Markers
 
-```{r, echo=FALSE}
-set.seed(2016-04-25)
-df <- data.frame(lat = runif(20, min = 39.2, max = 39.3),
-                 lng = runif(20, min = -76.6, max = -76.5))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers()
-```
-
-## Making Custom Markers
-
-The blue markers that leaflet comes packaged with may not be
-enough depending on what you're mapping. Thankfully you can
-make your own markers from `.png` files.
-
-```{r, eval=FALSE}
-hopkinsIcon <- makeIcon(
-  iconUrl = "http://brand.jhu.edu/content/uploads/2014/06/university.shield.small_.blue_.png",
-  iconWidth = 31*215/230, iconHeight = 31,
-  iconAnchorX = 31*215/230/2, iconAnchorY = 16
-)
-
-hopkinsLatLong <- data.frame(
-  lat = c(39.2973166, 39.3288851, 39.2906617),
-  lng = c(-76.5929798, -76.6206598, -76.5469683))
-
-hopkinsLatLong %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(icon = hopkinsIcon)
-```
-
-## Making Custom Markers
-
-```{r, echo=FALSE}
-hopkinsIcon <- makeIcon(
-  iconUrl = "http://brand.jhu.edu/content/uploads/2014/06/university.shield.small_.blue_.png",
-  iconWidth = 31*215/230, iconHeight = 31,
-  iconAnchorX = 31*215/230/2, iconAnchorY = 16
-)
-
-hopkinsLatLong <- data.frame(
-  lat = c(39.2973166, 39.3288851, 39.2906617, 39.2970681, 39.2824806),
-  lng = c(-76.5929798, -76.6206598, -76.5469683, -76.6150537, -76.6016766))
-
-hopkinsLatLong %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(icon = hopkinsIcon)
-```
-
-## Adding Multiple Popups
-
-When adding multiple markers to a map, you may want to add
-popups for each marker. You can specify a string of plain
-text for each popup, or you can provide HTML which will be
-rendered inside of each popup.
-
-```{r, eval=FALSE}
-hopkinsSites <- c(
-  "<a href='http://www.jhsph.edu/'>East Baltimore Campus</a>",
-  "<a href='https://apply.jhu.edu/visit/homewood/'>Homewood Campus</a>",
-  "<a href='http://www.hopkinsmedicine.org/johns_hopkins_bayview/'>Bayview Medical Center</a>",
-  "<a href='http://www.peabody.jhu.edu/'>Peabody Institute</a>",
-  "<a href='http://carey.jhu.edu/'>Carey Business School</a>"
-)
-
-hopkinsLatLong %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(icon = hopkinsIcon, popup = hopkinsSites)
-```
-
-## Adding Multiple Popups
-
-```{r, echo=FALSE}
-hopkinsSites <- c(
-  "<a href='http://www.jhsph.edu/'>East Baltimore Campus</a>",
-  "<a href='https://apply.jhu.edu/visit/homewood/'>Homewood Campus</a>",
-  "<a href='http://www.hopkinsmedicine.org/johns_hopkins_bayview/'>Bayview Medical Center</a>",
-  "<a href='http://www.peabody.jhu.edu/'>Peabody Institute</a>",
-  "<a href='http://carey.jhu.edu/'>Carey Business School</a>"
-)
-
-hopkinsLatLong %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(icon = hopkinsIcon, popup = hopkinsSites)
-```
-
-## Mapping Clusters
-
-Sometimes you might have so many points on a map that it
-doesn't make sense to plot every marker. In these situations
-leaflet allows you to plot clusters of markers using
-`addMarkers(clusterOptions = markerClusterOptions())`. When
-you zoom in to each cluster, the clusters will separate until
-you can see the individual markers.
-
-```{r, eval=FALSE}
-df <- data.frame(lat = runif(500, min = 39.25, max = 39.35),
-                 lng = runif(500, min = -76.65, max = -76.55))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(clusterOptions = markerClusterOptions())
-```
-
-## Mapping Clusters
-
-```{r, echo=FALSE}
-df <- data.frame(lat = runif(500, min = 39.25, max = 39.35),
-                 lng = runif(500, min = -76.65, max = -76.55))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addMarkers(clusterOptions = markerClusterOptions())
-```
-
-## Mapping Circle Markers
-
-Instead of adding markers or clusters you can easily add
-circle markers using `addCircleMarkers()`.
-
-```{r, eval=FALSE}
-df <- data.frame(lat = runif(20, min = 39.25, max = 39.35),
-                 lng = runif(20, min = -76.65, max = -76.55))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers()
-```
-
-## Mapping Circle Markers
-
-```{r, echo=FALSE}
-df <- data.frame(lat = runif(20, min = 39.25, max = 39.35),
-                 lng = runif(20, min = -76.65, max = -76.55))
-df %>% 
-  leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers()
-```
-
-## Drawing Circles
-
-You can draw arbitrary shapes on the maps you create,
-including circles and squares. The code below draws a map
-where the circle on each city is proportional to the
-population of that city.
-
-```{r, eval=FALSE}
-md_cities <- data.frame(name = c("Baltimore", "Frederick", "Rockville", "Gaithersburg", 
-                                 "Bowie", "Hagerstown", "Annapolis", "College Park", "Salisbury", "Laurel"),
-                        pop = c(619493, 66169, 62334, 61045, 55232,
-                                39890, 38880, 30587, 30484, 25346),
-                        lat = c(39.2920592, 39.4143921, 39.0840, 39.1434, 39.0068, 39.6418, 38.9784, 38.9897, 38.3607, 39.0993),
-                        lng = c(-76.6077852, -77.4204875, -77.1528, -77.2014, -76.7791, -77.7200, -76.4922, -76.9378, -75.5994, -76.8483))
-md_cities %>%
-  leaflet() %>%
-  addTiles() %>%
-  addCircles(weight = 1, radius = sqrt(md_cities$pop) * 30)
-```
-
-## Drawing Circles
-
-```{r, echo=FALSE}
-md_cities <- data.frame(name = c("Baltimore", "Frederick", "Rockville", "Gaithersburg", 
-                                 "Bowie", "Hagerstown", "Annapolis", "College Park", "Salisbury", "Laurel"),
-                        pop = c(619493, 66169, 62334, 61045, 55232,
-                                39890, 38880, 30587, 30484, 25346),
-                        lat = c(39.2920592, 39.4143921, 39.0840, 39.1434, 39.0068, 39.6418, 38.9784, 38.9897, 38.3607, 39.0993),
-                        lng = c(-76.6077852, -77.4204875, -77.1528, -77.2014, -76.7791, -77.7200, -76.4922, -76.9378, -75.5994, -76.8483))
-md_cities %>%
-  leaflet() %>%
-  addTiles() %>%
-  addCircles(weight = 1, radius = sqrt(md_cities$pop) * 30)
-```
-
-## Drawing Rectangles
-
-You can add rectangles on leaflet maps as well:
-
-```{r, eval=FALSE}
-leaflet() %>%
-  addTiles() %>%
-  addRectangles(lat1 = 37.3858, lng1 = -122.0595, 
-                lat2 = 37.3890, lng2 = -122.0625)
-```
-
-## Drawing Rectangles
-
-```{r, echo=FALSE}
-leaflet() %>%
-  addTiles() %>%
-  addRectangles(lat1 = 37.3858, lng1 = -122.0595, 
-                lat2 = 37.3890, lng2 = -122.0625)
-```
-
-## Adding Legends
-
-Adding a legend can be useful if you have markers on your
-map with different colors:
-
-```{r, eval=FALSE}
-df <- data.frame(lat = runif(20, min = 39.25, max = 39.35),
-                 lng = runif(20, min = -76.65, max = -76.55),
-                 col = sample(c("red", "blue", "green"), 20, replace = TRUE),
-                 stringsAsFactors = FALSE)
-
-df %>%
-  leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(color = df$col) %>%
-  addLegend(labels = LETTERS[1:3], colors = c("blue", "red", "green"))
-```
-
-## Adding Legends
-
-```{r, echo=FALSE, message=FALSE}
-df <- data.frame(lat = runif(20, min = 39.25, max = 39.35),
-                 lng = runif(20, min = -76.65, max = -76.55),
-                 col = sample(c("red", "blue", "green"), 20, replace = TRUE),
-                 stringsAsFactors = FALSE)
-
-df %>%
-  leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(color = df$col) %>%
-  addLegend(labels = LETTERS[1:3], colors = c("blue", "red", "green"))
-```
+## Customizing Output Options
+- The gear button next to the Knit button opens a settings window
+- Depending on the type of document you are planning to generate
+    + Change the overall appearance/theme of the document
+    + Change figure sizes
+    + Add custom CSS
+    + Include a logo
+    + And more
 
 ## Conclusion
 
-For for details about the leaflet package for R 
-visit http://rstudio.github.io/leaflet/.
+For more information about R Markdown visit http://rmarkdown.rstudio.com/
