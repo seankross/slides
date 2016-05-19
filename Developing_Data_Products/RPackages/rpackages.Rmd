@@ -73,7 +73,7 @@ makes it easier for others to install your package.
 - A DESCRIPTION file which has info about the package
 - R code! (in the R/ sub-directory)
 - Documentation (in the man/ sub-directory)
-- NAMESPACE (optional, but do it)
+- NAMESPACE
 - Full requirements in Writing R Extensions
 
 
@@ -106,7 +106,7 @@ These fields are optional but commonly used
 
 <b>Package</b>:  gpclib<br />
 <b>Title</b>:  General Polygon Clipping Library for R<br />
-<b>Description</b>:  General polygon clipping routines for R based on Alan Murta's C library<br />
+<b>Description</b>:  General polygon clipping routines for R based on Alan Murta's C library.<br />
 <b>Version</b>:  1.5-5<br />
 <b>Author</b>:  Roger D. Peng <rpeng@jhsph.edu> with contributions from Duncan Murdoch and Barry Rowlingson; GPC library by Alan Murta<br />
 <b>Maintainer</b>:  Roger D. Peng <rpeng@jhsph.edu><br />
@@ -147,11 +147,13 @@ These fields are optional but commonly used
 ## The NAMESPACE File
 
 Key directives
+
 - export("\<function>") 
 - import("\<package>")
 - importFrom("\<package>", "\<function>")
 
 Also important
+
 - exportClasses("\<class>")
 - exportMethods("\<generic>")
 
@@ -161,8 +163,14 @@ Also important
 
 ```r
 export("mvtsplot")
-importFrom(graphics, "Axis")
 import(splines)
+import(RColorBrewer)
+importFrom("grDevices", "colorRampPalette", "gray")
+importFrom("graphics", "abline", "axis", "box", "image", 
+           "layout", "lines", "par", "plot", "points", 
+           "segments", "strwidth", "text", "Axis")
+importFrom("stats", "complete.cases", "lm", "na.exclude", 
+           "predict", "quantile")
 ```
 
 
@@ -176,9 +184,10 @@ importFrom(graphics, plot)
 
 exportClasses("gpc.poly", "gpc.poly.nohole")
 
-exportMethods("show", "get.bbox", "plot", "intersect", "union", "setdiff", 
-              "[", "append.poly", "scale.poly", "area.poly", "get.pts", 
-              "coerce", "tristrip", "triangulate")
+exportMethods("show", "get.bbox", "plot", "intersect", "union", 
+              "setdiff", "[", "append.poly", "scale.poly", 
+              "area.poly", "get.pts", "coerce", "tristrip", 
+              "triangulate")
 ```
 
 
