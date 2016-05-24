@@ -170,7 +170,7 @@
 <li>A DESCRIPTION file which has info about the package</li>
 <li>R code! (in the R/ sub-directory)</li>
 <li>Documentation (in the man/ sub-directory)</li>
-<li>NAMESPACE (optional, but do it)</li>
+<li>NAMESPACE</li>
 <li>Full requirements in Writing R Extensions</li>
 </ul>
 
@@ -200,7 +200,7 @@
 
 </article></slide><slide class=''><hgroup><h2>DESCRIPTION File: <code>gpclib</code></h2></hgroup><article  id="description-file-gpclib">
 
-<p><b>Package</b>: gpclib<br /> <b>Title</b>: General Polygon Clipping Library for R<br /> <b>Description</b>: General polygon clipping routines for R based on Alan Murta&#39;s C library<br /> <b>Version</b>: 1.5-5<br /> <b>Author</b>: Roger D. Peng <a href='mailto:rpeng@jhsph.edu' title=''>rpeng@jhsph.edu</a> with contributions from Duncan Murdoch and Barry Rowlingson; GPC library by Alan Murta<br /> <b>Maintainer</b>: Roger D. Peng <a href='mailto:rpeng@jhsph.edu' title=''>rpeng@jhsph.edu</a><br /> <b>License</b>: file LICENSE<br /> <b>Depends</b>: R (&gt;= 2.14.0), methods<br /> <b>Imports</b>: graphics<br /> <b>Date</b>: 2013-04-01<br /> <b>URL</b>: <a href='http://www.cs.man.ac.uk/~toby/gpc/' title=''>http://www.cs.man.ac.uk/~toby/gpc/</a>, <a href='http://github.com/rdpeng/gpclib' title=''>http://github.com/rdpeng/gpclib</a></p>
+<p><b>Package</b>: gpclib<br /> <b>Title</b>: General Polygon Clipping Library for R<br /> <b>Description</b>: General polygon clipping routines for R based on Alan Murta&#39;s C library.<br /> <b>Version</b>: 1.5-5<br /> <b>Author</b>: Roger D. Peng <a href='mailto:rpeng@jhsph.edu' title=''>rpeng@jhsph.edu</a> with contributions from Duncan Murdoch and Barry Rowlingson; GPC library by Alan Murta<br /> <b>Maintainer</b>: Roger D. Peng <a href='mailto:rpeng@jhsph.edu' title=''>rpeng@jhsph.edu</a><br /> <b>License</b>: file LICENSE<br /> <b>Depends</b>: R (&gt;= 2.14.0), methods<br /> <b>Imports</b>: graphics<br /> <b>Date</b>: 2013-04-01<br /> <b>URL</b>: <a href='http://www.cs.man.ac.uk/~toby/gpc/' title=''>http://www.cs.man.ac.uk/~toby/gpc/</a>, <a href='http://github.com/rdpeng/gpclib' title=''>http://github.com/rdpeng/gpclib</a></p>
 
 </article></slide><slide class=''><hgroup><h2>R Code</h2></hgroup><article  id="r-code">
 
@@ -230,15 +230,32 @@
 
 </article></slide><slide class=''><hgroup><h2>The NAMESPACE File</h2></hgroup><article  id="the-namespace-file-2">
 
-<p>Key directives - export(&quot;&lt;function&gt;&quot;) - import(&quot;&lt;package&gt;&quot;) - importFrom(&quot;&lt;package&gt;&quot;, &quot;&lt;function&gt;&quot;)</p>
+<p>Key directives</p>
 
-<p>Also important - exportClasses(&quot;&lt;class&gt;&quot;) - exportMethods(&quot;&lt;generic&gt;&quot;)</p>
+<ul>
+<li>export(&quot;&lt;function&gt;&quot;)</li>
+<li>import(&quot;&lt;package&gt;&quot;)</li>
+<li>importFrom(&quot;&lt;package&gt;&quot;, &quot;&lt;function&gt;&quot;)</li>
+</ul>
+
+<p>Also important</p>
+
+<ul>
+<li>exportClasses(&quot;&lt;class&gt;&quot;)</li>
+<li>exportMethods(&quot;&lt;generic&gt;&quot;)</li>
+</ul>
 
 </article></slide><slide class=''><hgroup><h2>NAMESPACE File: <code>mvtsplot</code> package</h2></hgroup><article  id="namespace-file-mvtsplot-package">
 
 <pre class = 'prettyprint lang-r'>export(&quot;mvtsplot&quot;)
-importFrom(graphics, &quot;Axis&quot;)
-import(splines)</pre>
+import(splines)
+import(RColorBrewer)
+importFrom(&quot;grDevices&quot;, &quot;colorRampPalette&quot;, &quot;gray&quot;)
+importFrom(&quot;graphics&quot;, &quot;abline&quot;, &quot;axis&quot;, &quot;box&quot;, &quot;image&quot;, 
+           &quot;layout&quot;, &quot;lines&quot;, &quot;par&quot;, &quot;plot&quot;, &quot;points&quot;, 
+           &quot;segments&quot;, &quot;strwidth&quot;, &quot;text&quot;, &quot;Axis&quot;)
+importFrom(&quot;stats&quot;, &quot;complete.cases&quot;, &quot;lm&quot;, &quot;na.exclude&quot;, 
+           &quot;predict&quot;, &quot;quantile&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>NAMESPACE File: <code>gpclib</code> package</h2></hgroup><article  id="namespace-file-gpclib-package">
 
@@ -248,9 +265,10 @@ importFrom(graphics, plot)
 
 exportClasses(&quot;gpc.poly&quot;, &quot;gpc.poly.nohole&quot;)
 
-exportMethods(&quot;show&quot;, &quot;get.bbox&quot;, &quot;plot&quot;, &quot;intersect&quot;, &quot;union&quot;, &quot;setdiff&quot;, 
-              &quot;[&quot;, &quot;append.poly&quot;, &quot;scale.poly&quot;, &quot;area.poly&quot;, &quot;get.pts&quot;, 
-              &quot;coerce&quot;, &quot;tristrip&quot;, &quot;triangulate&quot;)</pre>
+exportMethods(&quot;show&quot;, &quot;get.bbox&quot;, &quot;plot&quot;, &quot;intersect&quot;, &quot;union&quot;, 
+              &quot;setdiff&quot;, &quot;[&quot;, &quot;append.poly&quot;, &quot;scale.poly&quot;, 
+              &quot;area.poly&quot;, &quot;get.pts&quot;, &quot;coerce&quot;, &quot;tristrip&quot;, 
+              &quot;triangulate&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Documentation</h2></hgroup><article  id="documentation">
 
