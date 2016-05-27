@@ -1,0 +1,28 @@
+---
+title: 'Shiny: Part 2'
+author: "The Johns Hopkins Data Science Lab"
+always_allow_html: yes
+---
+
+## Reactivity
+
+A reactive expression is like a recipie that manipulates
+inputs from Shiny and then returns a value. Reactivity
+provides a way for your app to respond since inputs will 
+change depending on how users interact with your user 
+interface.
+
+## Your First Reactive App
+
+```{r, echo=FALSE}
+library(webshot)
+appshot("app1", "app1.png")
+```
+
+## Prediction App
+
+![](app1.png)
+
+## Advanced UI
+
+## Interactive Graphics
