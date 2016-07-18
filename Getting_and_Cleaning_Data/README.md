@@ -66,7 +66,7 @@
 	* Github
 	* Public data sharing Figshare
 	* Discussion of bigger data
-* How to release a data package
+* How to release a data package (GS)
 * Case study II: nastier example
 
 
