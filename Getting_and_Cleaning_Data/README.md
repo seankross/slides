@@ -18,7 +18,7 @@
 	* apis: getting from the web
 	* websites/scraping
 	* Weird binaries
-* Overview of the process (GS)
+* Case study I: Overview of the process (GS)
 	 * read the data in
 	 * View, head, str, summary, unique, (exploring) 
 	 * change column names
@@ -66,7 +66,7 @@
 	* Github
 	* Public data sharing Figshare
 	* Discussion of bigger data
-* Case study example
+* Case study II: nastier example
 
 
 
