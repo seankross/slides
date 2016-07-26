@@ -383,3 +383,8 @@ fork.
 - [The swirl Website](http://swirlstats.com/)
 - [The swirlify Documentation](http://swirlstats.com/swirlify/)
 - [The swirl Course Network](http://swirlstats.com/scn/)
+
+Feel free to get in touch with Team swirl:
+
+- Via email: info@swirlstats.com
+- On Twitter: @[swirlstats](https://twitter.com/swirlstats)
